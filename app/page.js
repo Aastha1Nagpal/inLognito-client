@@ -1,65 +1,85 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col items-center justify-center px-4 relative overflow-hidden">
+
+      {/* Ambient glows */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-violet-600/10 rounded-full blur-[140px]" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-700/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-emerald-700/8 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center w-full max-w-3xl">
+
+        {/* Logo + name */}
+        <div className="flex flex-col items-center mb-10">
+          <div className="relative mb-5">
+            <div className="absolute inset-0 rounded-full bg-violet-500/20 blur-xl scale-125" />
+            <div className="relative w-20 h-20 rounded-full ring-2 ring-violet-500/30 ring-offset-2 ring-offset-[#050505] overflow-hidden">
+              <Image src="/logo.png" alt="inLognito" fill unoptimized className="object-cover rounded-full" />
+            </div>
+          </div>
+
+          <h1
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-3"
+            style={{ fontFamily: "'Fjalla One', sans-serif" }}
+          >
+            in<span className="text-transparent bg-clip-text bg-linear-to-b from-violet-300 to-violet-600">L</span>ognito
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className="text-gray-600 text-sm tracking-wide">Anonymous. No login. No identity.</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+
+          {/* Live Chat */}
+          <div
+            onClick={() => router.push("/lobby")}
+            className="group relative flex flex-col bg-white/[0.03] border border-white/10 rounded-2xl p-7 cursor-pointer transition-all duration-300 hover:border-violet-500/40 hover:shadow-[0_0_40px_rgba(139,92,246,0.12)] hover:-translate-y-0.5"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-violet-600/5 to-transparent" />
+
+            <h2 className="text-xl font-bold text-white mb-2">Live Chat</h2>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Jump into anonymous rooms. No login needed.
+            </p>
+
+            <button className="mt-auto w-full bg-violet-600 hover:bg-violet-500 transition-colors text-white text-sm font-semibold py-2.5 rounded-xl">
+              Enter Chat
+            </button>
+          </div>
+
+          {/* Forums */}
+          <div
+            onClick={() => router.push("/forum")}
+            className="group relative flex flex-col bg-white/[0.03] border border-white/10 rounded-2xl p-7 cursor-pointer transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.08)] hover:-translate-y-0.5"
           >
-            Documentation
-          </a>
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-emerald-600/5 to-transparent" />
+
+            <h2 className="text-xl font-bold text-white mb-2">Forums</h2>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Post anonymously. Discuss freely.
+            </p>
+
+            <button className="mt-auto w-full bg-emerald-700 hover:bg-emerald-600 transition-colors text-white text-sm font-semibold py-2.5 rounded-xl">
+              Enter Forums
+            </button>
+          </div>
+
         </div>
-      </main>
+
+        {/* Footer */}
+        <p className="mt-10 text-xs text-gray-700 tracking-wide">You are always anonymous here</p>
+      </div>
+
     </div>
   );
 }
