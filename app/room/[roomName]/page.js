@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "http://localhost:4000";
+const SOCKET_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 const MAX_LENGTH = 500;
 
 export default function RoomPage({ params }) {
