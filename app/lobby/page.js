@@ -87,11 +87,17 @@ export default function Lobby() {
         className="relative z-10 flex items-center justify-between px-6 py-3.5 border-b border-white/[0.06] bg-black/40 backdrop-blur-xl"
         style={{ fontFamily: "'Fjalla One', sans-serif" }}
       >
-        <div className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="inLognito" width={32} height={32} unoptimized className="rounded-full" />
-          <span className="text-lg tracking-wide">
-            in<span className="text-transparent bg-clip-text bg-linear-to-b from-violet-400 to-violet-600">L</span>ognito
-          </span>
+        <div className="flex items-center gap-4">
+          <button onClick={() => router.push("/")} className="text-gray-500 hover:text-white text-sm transition-colors">
+            ← Back
+          </button>
+          <div className="w-px h-4 bg-white/10" />
+          <div className="flex items-center gap-2.5">
+            <Image src="/logo.png" alt="inLognito" width={32} height={32} unoptimized className="rounded-full" />
+            <span className="text-lg tracking-wide">
+              in<span className="text-transparent bg-clip-text bg-linear-to-b from-violet-400 to-violet-600">L</span>ognito
+            </span>
+          </div>
         </div>
       </header>
 

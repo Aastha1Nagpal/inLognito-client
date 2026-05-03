@@ -59,7 +59,7 @@ export default function Home() {
 
           {/* Forums */}
           <div
-            onClick={() => router.push("/forum")}
+            onClick={() => router.push("/forum/auth")}
             className="group relative flex flex-col bg-white/[0.03] border border-white/10 rounded-2xl p-7 cursor-pointer transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.08)] hover:-translate-y-0.5"
           >
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-emerald-600/5 to-transparent" />
